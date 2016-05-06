@@ -21,7 +21,7 @@ RUN \
 
 # Set up consul as a runit service
 COPY config-consul.json /etc/consul.d/
-COPY startConsul.sh /usr/runit/consul/run.sh
+COPY start.sh /usr/runit/consul/run.sh
 
 # expose Consul client agent ports
 EXPOSE 8301 8301/udp
