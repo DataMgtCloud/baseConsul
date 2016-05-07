@@ -23,6 +23,13 @@ RUN \
 COPY config-consul.json /etc/consul.d/
 COPY start.sh /usr/runit/consul/run.sh
 
+# Build user, group, and home dir for services
+RUN \
+  mkdir /home/svc && \
+  groupadd -g 616 svc && \
+  useradd -u 616 -g svc -d /home/svc -s /sbin/nologin -c "Service user" svc && \
+  chown -R svc:svc /home/svc
+
 # expose Consul client agent ports
 EXPOSE 8301 8301/udp
 
