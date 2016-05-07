@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Start the consul container"
 
 export DEFAULT_CONFIG_DIR="-config-dir /etc/consul.d"
 export CONSUL_OPTIONS="$CONSUL_OPTIONS $DEFAULT_CONFIG_DIR"
@@ -8,6 +9,7 @@ start_consul_agent(){
 }
 
 scan_file(){
+  echo "Scaning the file"
   if [[ -f $1 ]]
   then
     while read -r line
@@ -22,6 +24,7 @@ scan_file(){
 }
 
 scan_folder(){
+  echo "Scaning the folder"
   FILES=$1/*
   for f in $FILES
   do

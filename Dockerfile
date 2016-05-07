@@ -1,10 +1,4 @@
-FROM ubuntu
-
-RUN \
-  apt-get update && \
-  apt-get -y install runit curl iputils-ping dnsutils netcat unzip && \
-  apt-get -y autoremove && \
-  apt-get clean
+FROM datamgtcloud/baseos
 
 #executables
 RUN mkdir -p /opt/datamgt/bin/
@@ -22,6 +16,9 @@ RUN \
 # Set up consul as a runit service
 COPY config-consul.json /etc/consul.d/
 COPY start.sh /usr/runit/consul/run.sh
+RUN \
+  mkdir -p /etc/service/consul && \
+  ln -s /usr/runit/consul/run.sh /etc/service/consul/run
 
 # Build user, group, and home dir for services
 RUN \
