@@ -19,5 +19,15 @@ RUN \
   rm consul.zip && \
   mv consul /opt/datamgt/bin/
 
+# consul scripts
+# Set up consul as a runit service
+COPY config-consul.json /etc/consul.d/
+COPY start.sh /usr/runit/consul/run.sh
+RUN \
+  mkdir -p /etc/service/consul && \
+  ln -s /usr/runit/consul/run.sh /etc/service/consul/run
+
+ADD boot.sh /sbin/boot
+
 # expose Consul client agent ports
 EXPOSE 8301 8301/udp
