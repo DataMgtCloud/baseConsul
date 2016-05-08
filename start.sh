@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Start the consul container"
 
 export DEFAULT_CONFIG_DIR="-config-dir /etc/consul.d"
 export CONSUL_OPTIONS="$CONSUL_OPTIONS $DEFAULT_CONFIG_DIR"
