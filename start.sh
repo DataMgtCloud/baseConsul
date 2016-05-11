@@ -4,7 +4,7 @@ export DEFAULT_CONFIG_DIR="-config-dir /etc/consul.d"
 export CONSUL_OPTIONS="$CONSUL_OPTIONS $DEFAULT_CONFIG_DIR"
 
 start_consul_agent(){
-  GOMAXPROCS=2 exec /opt/datamgt/home/bin/consul agent $CONSUL_OPTIONS
+  GOMAXPROCS=2 exec /opt/datamgt/bin/consul agent $CONSUL_OPTIONS
 }
 
 scan_file(){
